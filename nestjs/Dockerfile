@@ -1,7 +1,9 @@
-FROM node:20-slim
-
-WORKDIR /home/node/app
-
-USER node
-
-CMD [ "tail", "-f", "/dev/null" ]
+FROM node:18 
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+RUN npx prisma generate
+RUN npx prisma migrate dev  
+COPY . .
+RUN npm run build
+CMD [ "node", "dist/main.js" ]

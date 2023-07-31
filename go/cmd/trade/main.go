@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sync"
-
+	"os"
 	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/devfullcycle/imersao13/go/internal/infra/kafka"
 	"github.com/devfullcycle/imersao13/go/internal/market/dto"
@@ -18,12 +18,17 @@ func main() {
 	wg := &sync.WaitGroup{}
 	defer wg.Wait()
 
+	kafkaServers := os.Getenv("KAFKA_BOOTSTRAP_SERVERS")
+	kafkaGroupId := os.Getenv("KAFKA_GROUP_ID")
+	kafkaAutoOffsetReset := os.Getenv("KAFKA_AUTO_OFFSET_RESET")
+
 	kafkaMsgChan := make(chan *ckafka.Message)
 	configMap := &ckafka.ConfigMap{
-		"bootstrap.servers": "host.docker.internal:9094",
-		"group.id":          "myGroup",
-		"auto.offset.reset": "latest",
+		"bootstrap.servers": kafkaServers,
+		"group.id":          kafkaGroupId,
+		"auto.offset.reset": kafkaAutoOffsetReset,
 	}
+	
 	producer := kafka.NewKafkaProducer(configMap)
 	kafka := kafka.NewConsumer(configMap, []string{"input"})
 
