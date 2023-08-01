@@ -81,7 +81,7 @@ spec:
         - containerPort: 3000
         env:
           - name: DATABASE_URL
-            value: mongodb+srv://root:root@mongodb:27017/admin
+            value: mongodb://root:root@mongodb:27017
             #?authSource=admin
           - name: KAFKA_ENDPOINT
             value: "146.190.186.1:9092"
