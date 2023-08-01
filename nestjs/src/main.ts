@@ -9,7 +9,7 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        brokers: ['host.docker.internal:9094'],
+        brokers: [process.env.KAFKA_ENDPOINT],
       },
       consumer: {
         groupId: 'orders-consumer',
