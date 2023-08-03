@@ -40,10 +40,10 @@ const chartOptions = {
 export const ChartComponent = forwardRef<
   ChartComponentRef,
   { header: string; data?: any[] }
->((props, ref) => {
+>((props: any, ref: any) => {
   const chartContainerRef = useRef() as MutableRefObject<HTMLDivElement>;
   const chartRef = useRef({
-    api() {
+    api(): any {
       if (!this._api) {
         this._api = createChart(chartContainerRef.current, {
           ...chartOptions,
