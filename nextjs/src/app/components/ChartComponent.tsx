@@ -44,18 +44,24 @@ export const ChartComponent = forwardRef<
   const chartContainerRef = useRef() as MutableRefObject<HTMLDivElement>;
   const chartRef = useRef({
     api(): any {
+      //@ts-expect-error
       if (!this._api) {
+        //@ts-expect-error
         this._api = createChart(chartContainerRef.current, {
           ...chartOptions,
           width: chartContainerRef.current.clientWidth,
           height: chartContainerRef.current.clientHeight,
         });
+        //@ts-expect-error
         this._api.timeScale().fitContent();
       }
+      //@ts-expect-error
       return this._api;
     },
     free() {
+      //@ts-expect-error
       if (this._api) {
+        //@ts-expect-error
         this._api.remove();
       }
     },

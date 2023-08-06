@@ -15,7 +15,8 @@ import { Order, OrderSchema } from './order.schema';
         options: {
           client: {
             clientId: 'orders',
-            brokers: ['host.docker.internal:9094'],
+            brokers: [process.env.KAFKA_ENDPOINT],
+            // brokers: ['host.docker.internal:9094'],
             //brokers: ['kafka:29092'], // para interna do docker
           },
         },

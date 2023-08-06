@@ -17,7 +17,7 @@ import useSWRSubscription, { SWRSubscriptionOptions } from "swr/subscription";
 //
 // async function getWalletAssets(wallet_id: string): Promise<WalletAsset[]> {
 //   const response = await fetch(
-//     `http://host.docker.internal:3000/wallets/${wallet_id}/assets`,
+//     `http://localhost:3000/wallets/${wallet_id}/assets`,
 //     {
 //       //cache: 'no-store', processamento sempre dinamico
 //       next: {

@@ -8,11 +8,11 @@ build:
       context: nestjs
       docker:
         dockerfile: Dockerfile
-    - image: fabricioveronez/trader-web
-      context: nextjs
-      docker:
-        dockerfile: Dockerfile
+    # - image: fabricioveronez/trader-web
+    #   context: nextjs
+    #   docker:
+    #     dockerfile: Dockerfile
 manifests:
   rawYaml:
     - k8s/api/api-deploy.yaml
-    - k8s/front/front-deploy.yaml
+    # - k8s/front/front-deploy.yaml
