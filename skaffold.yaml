@@ -4,15 +4,17 @@ metadata:
   name: imersao
 build:
   artifacts:
-    - image: fabricioveronez/trader-api
-      context: nestjs
+    - image: trader-api
+      context: 02-api
       docker:
         dockerfile: Dockerfile
-    # - image: fabricioveronez/trader-web
-    #   context: nextjs
-    #   docker:
-    #     dockerfile: Dockerfile
+    - image: trader-web
+      context: 03-frontend
+      docker:
+        dockerfile: Dockerfile
+  # local: 
+  #   push: true
 manifests:
   rawYaml:
-    - k8s/api/api-deploy.yaml
-    # - k8s/front/front-deploy.yaml
+    - 04-k8s-deploy/03-api/api-deploy.yaml
+    - 04-k8s-deploy/04-front/front-deploy.yaml
